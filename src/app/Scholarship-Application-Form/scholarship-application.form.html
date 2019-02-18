@@ -1,0 +1,208 @@
+<body style="background-color: bisque;">
+    <div class="container">
+        <form #form="ngForm" (ngSubmit)="add(instituteForm)" class="form table-responsive" ngNativeValidate autofocus
+            required>
+            <h2>Scholarship Application Form</h2>
+            <p>All fields marked with * are required</p>
+            <fieldset>
+
+                <legend>Basic Details</legend>
+                <!--Institute Category-->
+                <label for="aadharNo"> <b> Adhar No * </b> </label>
+                <input type="text" [(ngModel)]="institutes.instituteName" name="InstituteName" pattern="[a-zA-Z]*">
+                <br><br>
+
+
+
+                <label for="name"> <b> Institute Name * </b> </label>
+                <input type="text" [(ngModel)]="institutes.instituteName" name="InstituteName" pattern="[a-zA-Z]*"
+                    placeholder="Enter your institue name" title="Enter only alphabets" autofocus required /><br><br>
+
+                <!--State of Institute-->
+                <label for="state"><b>State *</b></label>
+                <select id="StateList" [(ngModel)]="institutes.stateOfInstitute" [ngModelOptions]="{standalone: true}">
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="punjab">Punjab</option>
+                    <option value="mp">Madhya-Pradesh</option>
+                    <option value="hp">Himachal Pradesh</option>
+                </select>
+                <br><br>
+                <!--District of Institute-->
+                <label for="district"><b>District *</b></label>
+                <select id="DistrictList" [(ngModel)]="institutes.districtOfInstitute"
+                    [ngModelOptions]="{standalone: true}">
+                    <option value="pune">Pune</option>
+                    <option value="mumbai">Mumbai</option>
+                </select>
+                <br>
+                <br>
+
+                <!--DISE code of Institute-->
+                <label for="DISE code"><b>DISE Code *</b></label>
+                <input [(ngModel)]="institutes.diseCode" name="DISE Code" type="text" placeholder="DISE Code" autofocus
+                    required (keypress)="keyPress($event)"><br><br>
+
+
+                <!--Institute Code-->
+                <label for="instituteCode"><b>Institute Code *</b></label>
+                <input [(ngModel)]="institutes.instituteCode" name="Institute Code" type="text"
+                    placeholder="Insitute-Code" autofocus required><br><br>
+
+                <!--Institute Location-->
+                <label for="location"><b>Location *: </b></label>
+                <select id="locationOfInstitute" [(ngModel)]="institutes.location"
+                    [ngModelOptions]="{standalone: true}">
+                    <option value="1">--select--</option>
+                    <option value="2">Urban</option>
+                    <option value="3">Rural</option>
+                </select>
+                <br><br>
+
+                <!--Type of Institute-->
+                <label for="instituteType"><b>Type of Institute *: </b></label>
+                <select id="TypeOfInstitute" [(ngModel)]="institutes.instituteType"
+                    [ngModelOptions]="{standalone: true}">
+                    <option value="1">--select--</option>
+                    <option value="2">Autonomous</option>
+
+                </select>
+                <br><br>
+
+                <!--State to which the university is affiliated-->
+                <label for="affiliatedUniversityState"><b>Affiliated University State *:</b></label>
+                <select id="AffiliatedUniversityStateList" [(ngModel)]="institutes.affiliatedUniversityState"
+                    [ngModelOptions]="{standalone: true}">
+                    <option value="1">--select--</option>
+                    <option value="2">Maharashtra</option>
+                    <option value="3">Punjab</option>
+                    <option value="4">Madhya-Pradesh</option>
+                    <option value="5">Himachal Pradesh</option>
+                </select>
+                <br><br>
+
+
+                <!--Name of affiliated university board-->
+
+                <label for="affiliatedUniversityBoardName"><b>Affiliated University Board Name *:</b></label>
+                <input [(ngModel)]="institutes.affiliatedUniversityName" name="Affiliated university Board" type="text"
+                    pattern="[a-zA-Z]*" placeholder="Affiliated University Board Name" autofocus required><br><br>
+
+                <!--Starting year of admission of the Institute-->
+                <label for="state"><b>State *:</b></label>
+                <select id="StateList" [(ngModel)]="institutes.admissionStartYear" [ngModelOptions]="{standalone: true}"
+                    (keypress)="keyPress($event)">
+                    <option value="1">--select--</option>
+                </select>
+                <br><br>
+
+                <!--Set Password-->
+                <label for="setPassword"><b>Set Password *:</b></label>
+                <input [(ngModel)]="institutes.password" name="Enter Password" type="password"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                    placeholder="Enter Your Password" required><br><br>
+
+                <!--Confirm Password-->
+                <label for="confirmPassword"><b>Confirm Password *:</b></label>
+                <input [(ngModel)]="comppass" name="Enter Password again" type="password"
+                    placeholder="Re-enter your password " required><br><br>
+            </fieldset>
+            <br><br>
+
+            <fieldset>
+                <legend>Proof of Existence of Institute</legend>
+
+                <!--Certificate of Institute Establishment Registration-->
+                <label for="InstituteEstablishmentRegistrationCertificate"><b>Institute Establishment Registration
+                        Certificate *:</b></label>
+                <button type="button" style="font: bold 14px Arial;">upload</button><br />
+            </fieldset>
+            <br><br>
+            <fieldset>
+                <legend>Affiliated To</legend>
+
+                <!--Certificate of University Board Affiliation-->
+                <label for="UniversityBoardAffiliationCertificate"><b>University Board Affiliation Certificate
+                        *:</b></label>
+                <button type="button" style="font: bold 14px Arial;">upload</button><br />
+            </fieldset>
+            <br><br>
+
+            <fieldset>
+                <legend>Address</legend>
+
+                <!--Address line1-->
+                <label for="line 1"><b>Line 1 *:</b></label>
+                <input [(ngModel)]="institutes.instituteAddress" name="line 1" type="text"
+                    placeholder="enter street no." required><br><br>
+
+                <!--Address line2-->
+                <label for="line 2"><b>Line 2 *:</b></label>
+                <input [(ngModel)]="address" name="line 2" type="text" placeholder="locality/sector no."
+                    required><br><br>
+
+
+                <!--City of Institute-->
+                <label for="city"><b>City *:</b></label>
+                <input [(ngModel)]="institutes.instituteCity" name="City" type="text" pattern="[a-zA-Z]*"
+                    placeholder="City" required><br><br>
+
+                <!--State of Institute-->
+                <label for="state"><b>State *:</b></label>
+                <select id="StateList" [(ngModel)]="institutes.instituteState" [ngModelOptions]="{standalone: true}">
+
+                    <option value="2">Maharashtra</option>
+                    <option value="3">Punjab</option>
+                    <option value="4">Madhya-Pradesh</option>
+                    <option value="5">Himachal Pradesh</option>
+                </select>
+                <br><br>
+                <!--District of Institute-->
+                <label for="district"><b>District* :</b></label>
+                <select id="DistrictList" [(ngModel)]="institutes.instituteDistrict"
+                    [ngModelOptions]="{standalone: true}">
+
+                    <option value="pune">Pune</option>
+                    <option value="mumbai">Mumbai</option>
+                </select>
+                <br><br>
+
+                <!--Pincode of Institute-->
+                <label for="pincode"><b>Pincode *:</b></label>
+                <input [(ngModel)]="institutes.institutePincode" name="pincode" type="text"
+                    placeholder="only are digits accepted" required (keypress)="keyPress($event)"><br><br>
+            </fieldset>
+
+            <fieldset>
+                <legend>Contact Details</legend>
+
+                <!--Institute's Principal name-->
+                <label for="principalName"><b>Principal Name *:</b></label>
+                <input [(ngModel)]="institutes.principalName" name="Principal Name" type="text" pattern="[a-zA-Z]*"
+                    placeholder="Enter your Principal's Name" required><br><br>
+
+                <!--Institute Contact Details-->
+                <label for="mobileNumber"><b>Mobile Number *:</b></label>
+                <input [(ngModel)]="institutes.mobileNo" name="Mobile Number" type="text" pattern="[7-9]{1}{0-9}{9}"
+                    minlength="10" maxlength="12" placeholder="Enter your mobile no." required
+                    (keypress)="keyPress($event)"><br><br>
+
+                <label for="telephone"><b>Telephone:</b></label>
+                <input [(ngModel)]="institutes.telephone" name="Telephone" type="text" placeholder="Enter Telephone no."
+                    (keypress)="keyPress($event)">
+            </fieldset>
+            <br>
+            <br>
+
+            <input type="checkbox"> All the details and documents submitted by us are valid and true and if found guilty
+            of submitting invalid documents, we may be held responsible for that act by us<br><br>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-block">
+                <button type="button" class="btn btn-danger btn-block">Reset</button>
+            </div>
+        </form>
+
+    </div>
+    <h3 class="text-center">{{ response }}</h3>
+</body>

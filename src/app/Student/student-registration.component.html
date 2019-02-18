@@ -1,0 +1,185 @@
+<html>
+
+<body style="background:cadetblue ">
+  <div class="container">
+    <form #studentForm="ngForm" ngNativeValidate class="form-horizontal" (ngSubmit)="check(regform)" #regForm="ngForm">
+      <!--Heading-->
+      <h2 style="text-align:center;">FRESH STUDENT REGISTRATION FORM</h2>
+
+      <!--State of domicile-->
+      <div class="form-group" [class.has-error]="stateOfDomicileControl.invalid && stateOfDomicileControl.touched">
+        <label class="col-sm-3 control-label">STATE OF DOMICILE <span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <select name="stateslist" [(ngModel)]="students.stateOfDomicile" #stateOfDomicileControl="ngModel" autofocus required>            <option value="andaman">ANDAMAN AND NICOBAR</option>
+            <option value="maharashtra">MAHARASHTRA</option>
+          </select>
+          <span style="color:red;" class="help-block" *ngIf="stateOfDomicileControl.invalid && stateOfDomicileControl.touched">Select suitable option</span>
+        </div>
+      </div>
+
+      <!--DISTRICT-->
+      <div class="form-group" [class.has-error]="districtControl.invalid && districtControl.touched">
+        <label class="col-sm-3 control-label">DISTRICT <span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <select name="districtlist" [(ngModel)]="students.district" #districtControl="ngModel" autofocus required >
+            <option value="Mumbai">Mumbai</option>
+            <option value="Pune">Pune</option>
+          </select>
+          <span style="color:red;" class="help-block" *ngIf="districtControl.invalid && districtControl.touched">Select correct option</span>
+        </div>
+      </div>
+
+      <!--Name -->
+      <div class="form-group" [class.has-error]="nameControl.invalid && nameControl.touched">
+        <label class="col-sm-3 control-label">NAME:(AS PER YOUR MARKSHEET) <span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <input type="text" pattern="[a-z A-Z]*" id="name" name="name" class="form-control" [(ngModel)]="students.name"
+            placeholder="Enter your name" title="enter only alphabets" #nameControl="ngModel" autofocus required>
+            <span style="color:red;" class="help-block" *ngIf="nameControl.invalid && nameControl.touched">Name is required</span>
+          </div>
+      </div>
+
+
+      <!--Date of birth (DOB) -->
+      <div class="form-group" [class.has-error]="dobControl.invalid && dobControl.touched">
+        <label class="col-sm-3 control-label">DOB: <span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <input type="DATE" id="date" name="date" class="form-control" [(ngModel)]=students.dob #dobControl="ngModel" autofocus required>
+          <span style="color:red;" class="help-block" *ngIf="dobControl.invalid && dobControl.touched">Please enter your Date of Birth</span>
+        </div>
+      </div>
+
+      <!--GENDER-->
+      <div class="form-group" [class.has-error]="genderControl.invalid && genderControl.touched">
+        <label class="col-sm-3 control-label">GENDER <span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <select name="gender" [(ngModel)]="students.gender" #genderControl="ngModel" autofocus required>
+            <option value="male">MALE</option>
+            <option value="female">FEMALE</option>
+            <option value="female">OTHER</option>
+          </select>
+          <span style="color:red;" class="help-block" *ngIf="genderControl.invalid && genderControl.touched">Select suitable option</span>
+        </div>
+      </div>
+
+
+      <!--Mobile Number -->
+      <div class="form-group" [class.has-error]="mobNoControl.invalid && mobNoControl.touched">
+        <label class="col-sm-3 control-label">MOBILE NUMBER: <span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <input type="text" id="mobilenumber" name="mobilenumber" [(ngModel)]=students.mobileNo #mobNoControl="ngModel"
+            placeholder="Enter your mobile number" class="form-control" required minlength=10 maxlength=10
+            (keypress)="keyPress($event)" autofocus required>
+            <span style="color:red;" class="help-block" *ngIf="mobNoControl.invalid && mobNoControl.touched">Mobile number is required</span>
+        </div>
+      </div>
+
+      <!--Email id -->
+
+      <div class="form-group" [class.has-error]="emailControl.invalid && emailControl.touched">
+        <label class="col-sm-3 control-label">EMAIL: <span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <input type="email" id="email" name="email" [(ngModel)]=students.email #emailControl="ngModel" placeholder="Enter your email"
+            class="form-control" autofocus required>
+            <span style="color:red;" class="help-block" *ngIf="emailControl.invalid && emailControl.touched">Email is required</span>
+        </div>
+      </div>
+
+
+      <!--Institute code-->
+      <div class="form-group"  [class.has-error]="instituteCodeControl.invalid && instituteCodeControl.touched">
+        <label class="col-sm-3 control-label">INSTITUTE CODE: <span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <input type="text" id="institudecode" name="institudecode" [(ngModel)]=students.instituteCode #instituteCodeControl="ngModel"
+            placeholder="Enter your institute code " maxlength="20" class="form-control" autofocus required>
+            <span style="color:red;" class="help-block" *ngIf="instituteCodeControl.invalid && instituteCodeControl.touched">Please enter your institute code</span>
+        </div>
+      </div>
+
+      <!--Aadhar number -->
+
+      <div class="form-group" [class.has-error]="adharNoControl.invalid && adharNoControl.touched" [class.has-success]="adharNoControl.valid">
+        <label class="col-sm-3 control-label">AADHAR NUMBER: <span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <input type="text" id="aadharnumber" name="aadharnumber" [(ngModel)]=students.adharNo #adharNoControl="ngModel" minlength=12
+            maxlength=12 placeholder="Enter your aadharnumber" class="form-control" (keypress)="keyPress($event)"
+           autofocus required>
+           <span style="color:red;" class="help-block" *ngIf="adharNoControl.invalid && adharNoControl.touched">Aadhar no. is mandatory</span>
+        </div>
+      </div>
+
+      <!--Bank ifsc code -->
+      <div class="form-group" [class.has-error]="ifscControl.invalid && ifscControl.touched">
+        <label class="col-sm-3 control-label">BANK IFSC CODE:<span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <input type="text" pattern="^[A-Za-z]{4}\d{7}$" id="bankifsccode" name="bankifsccode"
+            [(ngModel)]=students.bankIfscCode #ifscControl="ngModel" placeholder="Enter your bank ifsc code" class="form-control"
+            title="first 4 should be alphabets and remaining should be digits " autofocus required
+            minlength=11 maxlength=11>
+            <span style="color:red;" class="help-block" *ngIf="ifscControl.invalid && ifscControl.touched">Enter your IFSC code</span>
+        </div>
+      </div>
+
+      <!--Bank account number -->
+      <div class="form-group"  [class.has-error]="bankAccControl.invalid && bankAccControl.touched">
+        <label for="bankaccountnumber" class="col-sm-3 control-label">BANK ACCOUNT NUMBER: <span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <input type="text" id="bankaccountnumber" name="bankaccountnumber" [(ngModel)]=students.bankAccNo #bankAccControl="ngModel"
+            placeholder="Enter your bank account number" minlength="9" maxlength="18" class="form-control" (keypress)="keyPress($event)"autofocus required>
+            <span style="color:red;" class="help-block" *ngIf="bankAccControl.invalid && bankAccControl.touched">Enter your Bank Account No.</span>
+        </div>
+      </div>
+
+      <!--Bank name -->
+      <div class="form-group" [class.has-error]="bankNameControl.invalid && bankNameControl.touched">
+        <label class="col-sm-3 control-label">BANK NAME:<span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <input type="text" id="bankname" pattern="[a-z A-Z]*" title="enter only alphabets" name="bankname"
+            placeholder="Enter your bank name" [(ngModel)]=students.bankName #bankNameControl="ngModel" class="form-control" maxlength="50" autofocus required>
+            <span style="color:red;" class="help-block" *ngIf="bankNameControl.invalid && bankNameControl.touched">Enter your Bank Name</span>
+        </div>
+      </div>
+
+      <!--Set password -->
+      <div class="form-group" [class.has-error]="setPassControl.invalid && setPassControl.touched">
+        <label class="col-sm-3 control-label">SET PASSWORD <span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <input type="password" id="setpassword" name="setpassword" [(ngModel)]=students.password #setPassControl="ngModel"
+            placeholder="SET YOUR PASSWORD" minlength="8" maxlength="20" class="form-control" autofocus required>
+            <span style="color:red;" class="help-block" *ngIf="setPassControl.invalid && setPassControl.touched">Enter Password</span>
+        </div>
+      </div>
+
+      <!--Confirm password -->
+      <div class="form-group" [class.has-error]="confirmPassControl.invalid && confirmPassControl.touched">
+        <label class="col-sm-3 control-label">CONFIRM PASSWORD <span style="color:red">*</span></label>
+        <div class="col-sm-12">
+          <input type="password" id="confirmpassword" name="confirmpassword" placeholder="CONFIRM YOUR PASSWORD"  minlength="8" maxlength="20" #confirmPassControl="ngModel"
+            [(ngModel)]=confirmpass class="form-control" autofocus required>
+            <span style="color:red;" class="help-block" *ngIf="confirmPassControl.invalid && confirmPassControl.touched">Re-Enter your password</span>
+        </div>
+        <p style="color:red;position: relative;left:1.2%;">{{array['password']}} </p>
+      </div>
+
+
+      <!--Agreement-->
+      <div class="form-group">
+        <div class="col-sm-12">
+          <input type="checkbox" [(ngModel)]="che " name="read" value="read"> ALL THE ABOVE INFORMATION FURNISHED BY ME
+          IS TRUE
+          TO THE BEST OF MY KNOWLEDGE<br>
+        </div>
+        <p style="color:red;position: relative;left:1.2%;">{{array['msg']}} </p>
+      </div>
+
+      <!--SUBMIT-->
+      <div class="form-group">
+        <input type="submit"  class="btn btn-primary btn-lg btn-block" [disabled]="studentForm.invalid">
+      </div>
+
+
+    </form>
+  </div>
+</body>
+
+</html>

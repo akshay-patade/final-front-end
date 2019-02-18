@@ -1,0 +1,311 @@
+<html>
+
+<body style="background:cadetblue ">
+    <div class="container">
+        <form #instituteForm="ngForm"  ngNativeValidate class="form-horizontal" (ngSubmit)="check(regform)" #regForm="ngForm">
+            <!--Heading-->
+            <h2 style="text-align:center;">INSTITUTE REGISTRATION REQUEST FORM</h2>
+            <h3 style="text-align:center;">BASIC DETAILS</h3>
+
+
+            <h3>Basic Details</h3>
+            <!--Institute Category-->
+            <div class="form-group"  [class.has-error]="instituteCatgryControl.invalid && instituteCatgryControl.touched">
+                <label class="col-sm-3 control-label">Institute Category <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <select name="stateslist" [(ngModel)]="institutes.instituteCategory" #instituteCatgryControl="ngModel" class="form-control"autofocus required>
+                       
+                        <option value="autonomous">Autonomous</option>
+                        <option value="nonautonomous">Non Autonomous</option>
+                    </select>
+                    <span style="color:red;" class="help-block" *ngIf="instituteCatgryControl.invalid && instituteCatgryControl.touched">Select suitable option</span>
+                </div>
+            </div>
+
+            <!--Institute Name-->
+            <div class="form-group" [class.has-error]="instituteNameControl.invalid && instituteNameControl.touched">
+                <label class="col-sm-3 control-label">INSTITUTE NAME <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <input type="text" pattern="[a-z A-Z]*" id="instiname" name="instiname" [(ngModel)]="institutes.instituteName" #instituteNameControl="ngModel"
+                        placeholder="Enter your name"  maxlength="60" title="enter only alphabets"
+                        class="form-control" autofocus required>
+                        <span style="color:red;" style="color:red;" class="help-block" *ngIf="instituteNameControl.invalid && instituteNameControl.touched">Enter Your Institute Name</span>
+                </div>
+            </div>
+
+            <!--State of Institute-->
+            <div class="form-group" [class.has-error]="stateOfInstiControl.invalid && stateOfInstiControl.touched">
+                <label class="col-sm-3 control-label">State <span style="color:red">*</span> </label>
+                <div class="col-sm-12">
+                    <select id="statelist" [(ngModel)]="institutes.stateOfInstitute" #stateOfInstiControl="ngModel"
+                        [ngModelOptions]="{standalone: true}" class="form-control" autofocus required>
+                        <option value="maharashtra">Maharashtra</option>
+                        <option value="punjab">Punjab</option>
+                        <option value="madhyapradesh">Madhya-Pradesh</option>
+                        <option value="himachalpradesh">Himachal Pradesh</option>
+                    </select>
+                    <span style="color:red;" class="help-block" *ngIf="stateOfInstiControl.invalid && stateOfInstiControl.touched">Select suitable option</span> 
+                </div>
+            </div>
+
+            <!--District of Institute-->
+            <div class="form-group" [class.has-error]="distriInstiControl.invalid && distriInstiControl.touched" >
+                <label for="district" class="col-sm-3 control-label">District <span style="color:red">*</span> </label>
+                <div class="col-sm-12">
+                    <select id="districtlist" [(ngModel)]="institutes.districtOfInstitute"
+                        [ngModelOptions]="{standalone: true}" #distriInstiControl="ngModel" class="form-control" autofocus required>
+                      
+                        <option value="mumbai">Mumbai</option>
+                    </select>
+                    <span style="color:red;" class="help-block" *ngIf="distriInstiControl.invalid && distriInstiControl.touched">Select suitable option</span>
+                </div>
+            </div>
+
+            <!--DISE code of Institute-->
+            <div class="form-group" [class.has-error]="diseCodeControl.invalid && diseCodeControl.touched">
+                <label class="col-sm-3 control-label">DISE Code <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <input type="text" id="diseCode" name="diseCode" [(ngModel)]="institutes.diseCode" #diseCodeControl="ngModel"
+                        placeholder="Enter DISE Code" class="form-control"  autofocus
+                        required>
+                        <span style="color:red;" class="help-block" *ngIf="diseCodeControl.invalid && diseCodeControl.touched">DISE Code is mandatory</span>
+                </div>
+            </div>
+
+
+            <!--Institute Code-->
+            <div class="form-group" [class.has-error]="instituteCodeControl.invalid && instituteCodeControl.touched">
+                <label class="col-sm-3 control-label">Institute Code <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <input type="text" id="instituteCode" name="instituteCode" [(ngModel)]="institutes.instituteCode" #instituteCodeControl="ngModel"
+                        placeholder="Enter your Institute Code Code" class="form-control" 
+                        autofocus required>
+                        <span style="color:red;" class="help-block" *ngIf="instituteCodeControl.invalid && instituteCodeControl.touched">Enter Institute Code</span>
+                </div>
+            </div>
+
+
+            <!--Institute Location-->
+            <div class="form-group" [class.has-error]="instiLocationControl.invalid && instiLocationControl.touched">
+                <label for="location" class="col-sm-3 control-label">Location <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <select id="locationOfInstitute" [(ngModel)]="institutes.location" #instiLocationControl="ngModel"
+                        [ngModelOptions]="{standalone: true}" class="form-control" autofocus required>
+                        
+                        <option value="rural">Rural</option>
+                        <option value="urban">Urban</option>
+                    </select>
+                    <span style="color:red;" class="help-block" *ngIf="instiLocationControl.invalid && instiLocationControl.touched">Select suitable option</span>
+                </div>
+            </div>
+
+            <!--Type of Institute-->
+            <div class="form-group" >
+                <label for="instituteType" class="col-sm-3 control-label">Type of Institute</label>
+                <div class="col-sm-12">
+                    <select id="TypeOfInstitute" [(ngModel)]="institutes.instituteType"
+                        [ngModelOptions]="{standalone: true}" class="form-control">
+                        <option value="private">Private</option>
+                        <option value="government">Government</option>
+                    </select>
+                    
+                </div>
+            </div>
+
+
+            <!--State to which the university is affiliated-->
+            <div class="form-group" [class.has-error]="uniAfiStateControl.invalid && uniAfiStateControl.touched">
+                <label for="affiliatedUniversityState" class="col-sm-3 control-label">Affiliated University
+                    State <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <select id="AffiliatedUniversityStateList" [(ngModel)]="institutes.affiUniversityState" #uniAfiStateControl="ngModel"
+                        [ngModelOptions]="{standalone: true}" class="form-control" autofocus required>
+                        <option value="maharashtra">Maharashtra</option>
+                        <option value="punjab">Punjab</option>
+                        <option value="madhyapradesh">Madhya-Pradesh</option>
+                        <option value="himachal">Himachal Pradesh</option>
+                    </select>
+                    <span style="color:red;" class="help-block" *ngIf="uniAfiStateControl.invalid && uniAfiStateControl.touched">Select suitable option</span>
+                </div>
+            </div>
+
+
+            <!--Name of affiliated university board-->
+            <div class="form-group" [class.has-error]="nameUniAfiControl.invalid && nameUniAfiControl.touched">
+                <label class="col-sm-3 control-label">Affiliated University Board<span
+                        style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <input type="text" pattern="[a-z A-Z]*" id="nameofaffiliateduniversityboard"
+                        name="nameofaffiliateduniversityboard" [(ngModel)]="institutes.affiUniversityName" #nameUniAfiControl="ngModel"
+                        placeholder="Enter your affiliated university board name" maxlength="60"
+                        title="enter only alphabets" class="form-control" autofocus required>
+                        <span style="color:red;" class="help-block" *ngIf="nameUniAfiControl.invalid && nameUniAfiControl.touched">Enter the Name of Affiliated University Board</span>
+                </div>
+            </div>
+
+            
+
+            <!--Starting year of admission of the Institute-->
+            <div class="form-group">
+                <label for="admissionStartYear" class="col-sm-3 control-label">Year from which admission started</label>
+                <div class="col-sm-12">
+                    <input type="text" id="admissionStartYear" name="admissionStartYear"
+                        [(ngModel)]="institutes.admissionStartYear" minlength=4 maxlength=4 
+                        placeholder="Enter the year from which admission started" class="form-control"
+                        (keypress)="keyPress($event)">
+                </div>
+            </div>
+
+            <!--Set Password-->
+            <div class="form-group" [class.has-error]="setPassControl.invalid && setPassControl.touched">
+                <label class="col-sm-3 control-label">Set Password <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <input type="password" id="setpwd" name="setpassword" [(ngModel)]=institutes.password #setPassControl="ngModel"
+                        placeholder="Set your password" class="form-control" minlength="8" maxlength="20" autofocus
+                        required>
+                        <span style="color:red;" style="color:red;" class="help-block" *ngIf="setPassControl.invalid && setPassControl.touched">Enter Password</span>
+                </div>
+            </div>
+
+            <!--Confirm Password-->
+            <div class="form-group" [class.has-error]="confirmPassControl.invalid && confirmPassControl.touched">
+                <label class="col-sm-3 control-label">Confirm Password <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <input type="password" id="confirmpassword" name="confirmpassword" minlength="8" maxlength="20"
+                        placeholder="Confirm your password" [(ngModel)]=comppass #confirmPassControl="ngModel" class="form-control" autofocus
+                        required>
+                        <span style="color:red;" style="color:red;" class="help-block" *ngIf="confirmPassControl.invalid && confirmPassControl.touched">Re-Enter your password</span>
+                </div>
+                <p style="color:red;position: relative;left:1.2%;">{{array['password']}} </p>
+            </div>
+
+
+            <h3>Proof of Existence of Institute</h3>
+
+            <!--Certificate of Institute Establishment Registration-->
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-3">
+                        Establishment Registration Certificate<label><span style="color:red">*</span></label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="file" name="instituteEstablishCerti" class="btn btn-primary"  [(ngModel)]="institutes.instituteEstCertificate" style="font: bold 14px Arial;" autofocus required>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Affiliated To</h3>
+
+            <!--Certificate of University Board Affiliation-->
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-3">
+                        Board Affiliation Certificate<label><span style="color:red">*</span></label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input [(ngModel)]="institutes.universityAffiCertificate"  type="file" name="universityAffiliationCerti" [(ngModel)]="institutes.universityAffiliationCerti" class="btn btn-primary" style="font: bold 14px Arial;" autofocus required>
+                    </div>
+                </div>
+            </div>
+
+
+            <h3>Address</h3>
+
+            <!--Address line1-->
+            <div class="form-group" [class.has-error]="instiAddressControl.invalid && instiAddressControl.touched">
+                <label class="col-sm-3 control-label">Address line1 <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <input type="text" id="address1" name="address1" [(ngModel)]="address1" #instiAddressControl="ngModel"
+                        placeholder="Enter street no." maxlength="20" class="form-control" autofocus
+                        required>
+                        <span style="color:red;" class="help-block" *ngIf="instiAddressControl.invalid && instiAddressControl.touched">Enter street no.</span>
+                </div>
+            </div>
+
+            <!--Address line2-->
+            <div class="form-group" [class.has-error]="instiAddresControl.invalid && instiAddresControl.touched">
+                <label class="col-sm-3 control-label">Address line2 <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <input type="text" id="address2" name="address2" [(ngModel)]="address2" #instiAddresControl="ngModel" placeholder="Enter Sector no."
+                         maxlength="20" class="form-control" autofocus required>
+                         <span style="color:red;" class="help-block" *ngIf="instiAddresControl.invalid && instiAddresControl.touched">Enter Sector no.</span>
+                </div>
+            </div>
+
+
+
+            <!--City of Institute-->
+            <div class="form-group" [class.has-error]="instiCityControl.invalid && instiCityControl.touched">
+                <label class="col-sm-3 control-label">City <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <input type="text" id="city" name="address" [(ngModel)]="institutes.instituteCity" #instiCityControl="ngModel" placeholder="Enter City"
+                         maxlength="20" class="form-control" autofocus required>
+                         <span style="color:red;" class="help-block" *ngIf="instiCityControl.invalid && instiCityControl.touched">Enter city of institute</span>
+                </div>
+            </div>
+
+            <!--State of Institute-->
+            <div class="form-group" [class.has-error]="instiStateControl.invalid && instiStateControl.touched">
+                <label for="state" class="col-sm-3 control-label">State <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <select id="StateList" [(ngModel)]="institutes.instituteState" [ngModelOptions]="{standalone: true}" #instiStateControl="ngModel"
+                        autofocus required>
+                        <option value="maharashtra">Maharashtra</option>
+                        <option value="punjab">Punjab</option>
+                        <option value="madhyapradesh">Madhya-Pradesh</option>
+                        <option value="himachal pradesh">Himachal Pradesh</option>
+                    </select>
+                    <span style="color:red;" class="help-block" *ngIf="instiStateControl.invalid && instiStateControl.touched">Select suitable option</span>
+                </div>
+            </div>
+
+            <!--District of Institute-->
+            <div class="form-group" [class.has-error]="instiDistrictControl.invalid && instiDistrictControl.touched">
+                <label for="district" class="col-sm-3 control-label">District <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <select id="DistrictList" [(ngModel)]="institutes.instituteDistrict" #instiDistrictControl="ngModel"
+                        [ngModelOptions]="{standalone: true}" class="form-control" autofocus required>
+                        <option value="pune">Pune</option>
+                        <option value="mumbai">Mumbai</option>
+                    </select>
+                    <span style="color:red;" class="help-block" *ngIf="instiDistrictControl.invalid && instiDistrictControl.touched">Select suitable option</span>
+                </div>
+            </div>
+
+            <!--Pincode of Institute-->
+            <div class="form-group" [class.has-error]="pincodeControl.invalid && pincodeControl.touched">
+                <label class="col-sm-3 control-label">Pincode <span style="color:red">*</span></label>
+                <div class="col-sm-12">
+                    <input type="text" id="pincode" name="pincode" [(ngModel)]="institutes.institutePinCode" #pincodeControl="ngModel"
+                        placeholder="Enter Pinode" minlength="6" maxlength="6" class="form-control"
+                        (keypress)="keyPress($event)" autofocus required>
+                        <span style="color:red;" class="help-block" *ngIf="pincodeControl.invalid && pincodeControl.touched">Pincode is mandatory</span>
+                </div>
+            </div>
+
+            <!--Mobile No-->
+
+            <div class="form-group" [class.has-error]="mobileNoControl.invalid && mobileNoControl.touched">
+                <label class="col-sm-3 control-label">Mobile No <span style="color: red">*</span></label>
+                <div class="col-sm-12">
+                    <input type="text" id="mobileNo" name="mobileNo" [(ngModel)]="institutes.mobileNo" #mobileNoControl="ngModel"
+                        placeholder="Enter Mobile No" minlength="10" maxlength="10" class="form-control"
+                        (keypress)="keyPress($event)" autofocus required>
+                        <span style="color:red;" class="help-block" *ngIf="mobileNoControl.invalid && mobileNoControl.touched">Enter Mobile No</span>
+                </div>
+            </div>
+
+            <br>
+
+            <input type="checkbox"> All the details and documents submitted by us are valid and true and if found guilty
+            of submitting invalid documents, we may be held responsible for that act by us<br><br>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-block" [disabled]="instituteForm.invalid"><br>
+                <button type="reset" class="btn btn-danger btn-block" id="reset-btn" ng-click="reset()">Reset</button><br><br>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

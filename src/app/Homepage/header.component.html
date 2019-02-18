@@ -1,0 +1,74 @@
+<html>
+<head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .header {
+      overflow: hidden;
+      background-color: #f1f1f1;
+      padding: 20px 10px;
+    }
+
+    .header a {
+      float: left;
+      color: black;
+      text-align: center;
+      padding: 12px;
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 25px;
+      border-radius: 4px;
+    }
+
+    .header a.logo {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .header a:hover {
+      background-color:springgreen;
+      color: black;
+    }
+
+    .header-right {
+      float: right;
+    }
+
+    @media screen and (max-width: 500px) {
+      .header a {
+        float: none;
+        display: block;
+        text-align: left;
+      }
+
+      .header-right {
+        float: none;
+      }
+    }
+  </style>
+</head>
+
+<!--navigation bar-->
+
+<body style="background-color: #f1f1f1">
+  <div class="header">
+    <a href="#default" class="logo">NATIONAL SCHOLARSHIP PORTAL</a>
+    <div class="header-right">
+      <a href="#" >HOME</a>
+      <a routerLink="/student-login"  >STUDENT LOGIN</a>
+      <a routerLink="/institute-login"  >INSTITUTE LOGIN</a>
+      <a routerLink="/state-login"  >STATE LOGIN</a>
+      <a routerLink="/ministry-login"  >MINISTRY LOGIN</a>
+      <a routerLink="/student-registration" >STUDENT REGISTRATION</a>
+      <a routerLink="/institute-registration" >INSTITUTE REGISTRATION</a>
+    </div>
+  </div>
+  </body>
+  </html>

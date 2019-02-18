@@ -1,0 +1,39 @@
+<!--Student Login-->
+<form ngNativeValidate class="form-horizontal" #regForm="ngForm" (ngSubmit)="add(regform)">
+  <h5 style="text-align: center">Student Login</h5>
+  <div class="container">
+  <div class="form-group">
+    <label class="col-sm-3 control-label">UID</label>
+    <div class="col-sm-12">
+      <input type="text" id="adharNo" name="adharNo" [(ngModel)]="students.adharNo" placeholder="Enter your Aadhar number"
+        class="form-control" minlength=12 maxlength=12  (keypress)="keyPress($event)" autofocus required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Password</label>
+    <div class="col-sm-12">
+      <input type="password" id="password" name="password" [(ngModel)]="students.password" placeholder="Enter your Password"
+        class="form-control" autofocus required>
+    </div>
+    <p style="color:red;text-align: center">{{error}}</p>
+  </div>
+
+
+
+  <!--SUBMIT BUTTON-->
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary btn-lg btn-block" VALUE="LOGIN"> 
+  </div>
+
+  <!--FORGOT PASSWORD -->
+  <h5 style="text-align: center"><a  href="">Forgot Pasword?</a></h5> 
+
+  <!--REMEMBER ME-->
+  <div style="text-align: center" class="form-group">
+    <div class="col-sm-12">
+      <input type="checkbox"> REMEMBER ME<br>
+    </div>
+  </div>
+
+</div>

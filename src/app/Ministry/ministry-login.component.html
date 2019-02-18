@@ -1,0 +1,41 @@
+<div class="container">
+        <h5 style="text-align: center">Ministry Login</h5>
+    
+        <form ngNativeValidate class="form-horizontal" #regForm="ngForm" (ngSubmit)="check(regform)">
+    
+        <!--Username-->
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Username</label>
+            <div class="col-sm-12">
+                <input type="text" id="username" name="username" [(ngModel)]="username" placeholder="Enter your Username"
+                    class="form-control" autofocus required>
+            </div>
+        </div>
+    
+        <!--Password-->
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Password</label>
+            <div class="col-sm-12">
+                <input type="password" id="uid" name="passwd" [(ngModel)]="passwd" placeholder="Enter your Password"
+                    class="form-control" autofocus required>
+            </div>
+        </div>
+    
+        <!--SUBMIT BUTTON-->
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-lg btn-block" VALUE="LOGIN">
+        </div>
+    
+        <!--FORGOT PASSWORD -->
+        <h5 style="text-align: center"><a href="">Forgot Pasword?</a></h5>
+    
+        <!--REMEMBER ME-->
+        <div style="text-align: center" class="form-group">
+            <div class="col-sm-12">
+                <input type="checkbox"> REMEMBER ME<br>
+            </div>
+        </div>
+    
+    </form>
+    
+    </div>
