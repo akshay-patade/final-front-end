@@ -28,6 +28,8 @@ import { MinistryLoginComponent } from './Ministry/ministry-login.component';
 import { InstituteSuccessComponent } from './Institute/institute-success.component';
 import { StudentSuccessComponent } from './Student/student-success.component';
 import { StudentDashboardComponent } from './Student/student-dashboard.component';
+import { InstituteLoginService } from './Institute/institute-login-service';
+import { InstituteDashboardComponent } from './Institute/institute-dashboard.component';
 
 
 const appRoutes: Routes= [
@@ -41,6 +43,7 @@ const appRoutes: Routes= [
   {path:'institute-success',component:InstituteSuccessComponent},
   {path:'student-success',component:StudentSuccessComponent},
   {path:'student-dashboard',component:StudentDashboardComponent},
+  {path:'institute-dashboard',component:InstituteDashboardComponent},
   {path:'scholarship-application',component:ScholarshipApplicationComponent}
 ]
 
@@ -59,7 +62,8 @@ const appRoutes: Routes= [
     FooterComponent,
     InstituteSuccessComponent,
     StudentSuccessComponent,
-    StudentDashboardComponent
+    StudentDashboardComponent,
+    InstituteDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +76,7 @@ const appRoutes: Routes= [
     AppRoutingModule
   ],
 
-  providers: [HttpClient,StudentLoginService,StudentService,InstituteService,ScholarshipApplicationService ],
+  providers: [HttpClient,StudentLoginService,StudentService,InstituteService,ScholarshipApplicationService,InstituteLoginService ],
 
   bootstrap: [AppComponent]
 })
